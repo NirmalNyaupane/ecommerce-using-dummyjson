@@ -73,7 +73,9 @@ export const InputField = ({
           width: width || "50%",
         }}
       />
-      <Typography component={"p"} color={"red"}>{errorMessage}</Typography>
+      <Typography component={"p"} color={"red"}>
+        {errorMessage}
+      </Typography>
     </Box>
   );
 };
