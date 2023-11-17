@@ -48,16 +48,18 @@ export const InputField = ({
   const [isFocus, setIsFocus] = useState(false);
 
   return (
-    <Box margin={"none"}>
-      <FormLabel
-        htmlFor={label}
-        focused={false}
-        sx={{
-          color: "black",
-        }}
-      >
-        {label}
-      </FormLabel>
+    <Box margin={"none"} width={width || "100%"}>
+      {label && (
+        <FormLabel
+          htmlFor={label}
+          focused={false}
+          sx={{
+            color: "black",
+          }}
+        >
+          {label}
+        </FormLabel>
+      )}
       <Input
         disableUnderline={true}
         onFocus={() => setIsFocus(true)}
@@ -70,12 +72,14 @@ export const InputField = ({
           border: `1px solid ${returnBoarderColor(isFocus, errorMessage)}`,
           borderRadius: "5px",
           paddingX: "5px",
-          width: width || "50%",
+          width: "100%",
         }}
       />
-      <Typography component={"p"} color={"red"}>
-        {errorMessage}
-      </Typography>
+      {errorMessage && (
+        <Typography component={"p"} color={"red"}>
+          {errorMessage}
+        </Typography>
+      )}
     </Box>
   );
 };

@@ -14,7 +14,7 @@ interface IProduct {
   images: string[];
 }
 
-type paginatedPayload = { limit?: number; skip?: number };
+type paginatedPayload = { limit?: number; skip?: number; q?:string};
 type GetAllProductResponse = PaginateResponse<IProduct>;
 type AllCategoryType = string[];
 

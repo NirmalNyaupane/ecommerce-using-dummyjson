@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useRef } from "react";
-import Slider from "../common/Slider";
+import Slider from "./Slider";
 import Link from "next/link";
 import ProductCard from "../card/ProductCard";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
@@ -40,20 +40,20 @@ const HomePage = () => {
   });
 
   const customScrollbarStyle: CSSObject = {
-    '&::-webkit-scrollbar': {
-        height: '6px',
-        width: '6px',
+    "&::-webkit-scrollbar": {
+      height: "6px",
+      width: "6px",
     },
-    '&::-webkit-scrollbar-thumb': {
-        backgroundColor: 'transparent',
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
     },
-    ':hover::-webkit-scrollbar-thumb': {
-        backgroundColor: 'gray.200',
+    ":hover::-webkit-scrollbar-thumb": {
+      backgroundColor: "gray.200",
     },
-    '&::-webkit-scrollbar-track': {
-        backgroundColor: 'transparent',
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
     },
-};
+  };
 
   //It handles the infinie scroll
   const handelInfiniteScroll = async () => {
@@ -149,12 +149,19 @@ const HomePage = () => {
                 elseShow={data?.pages.map((singlePage) => {
                   return singlePage.data.products.map((singleProduct) => {
                     return (
-                      <ProductCard
+                      <Link
+                        href={`/product/${singleProduct.id}`}
                         key={singleProduct.id}
-                        imageLink={singleProduct.thumbnail}
-                        heading={singleProduct.title}
-                        price={String(singleProduct.price)}
-                      />
+                        style={{
+                          textDecoration: "none",
+                        }}
+                      >
+                        <ProductCard
+                          imageLink={singleProduct.thumbnail}
+                          heading={singleProduct.title}
+                          price={String(singleProduct.price)}
+                        />
+                      </Link>
                     );
                   });
                 })}

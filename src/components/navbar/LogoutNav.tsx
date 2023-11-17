@@ -1,19 +1,42 @@
+"use client";
+import useDebounce from "@/hook/useDebounce";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/material";
+import { useState } from "react";
 import CommonModal from "../common/CommonModal";
 import { PrimaryButton } from "../common/CustomButton";
 import { InputField } from "../common/InputField";
 import Login from "../loginsignup/Login";
 import Signup from "../loginsignup/Signup";
 import CommonNav from "./common/CommonNav";
-
+import SearchProducts from "./common/SearchProducts";
 const LogoutNav = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isSearchBoxOpen, setSearchBoxOpen] = useState(false);
+  const debounceQuery = useDebounce(searchQuery, 1000);
+
+  const toggleSearchBox = () => {
+    setSearchBoxOpen(!isSearchBoxOpen);
+  };
+
+  const handleSearchBoxOpen = () => {
+    setSearchBoxOpen(true);
+  };
+
   return (
     <CommonNav
       section1="logo"
       section2={
         <Box component={"div"} width={"500px"} position={"relative"}>
-          <InputField type="text" width="100%" placeholder="Search" />
+          <InputField
+            type="text"
+            width="100%"
+            placeholder="Search"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchQuery}
+            onFocus={handleSearchBoxOpen}
+            onBlur={toggleSearchBox}
+          />
           <Box
             component={"span"}
             bgcolor={"primary"}
@@ -23,6 +46,10 @@ const LogoutNav = () => {
           >
             <SearchIcon sx={{ color: "gray" }} />
           </Box>
+          <SearchProducts
+            isOpen={isSearchBoxOpen}
+            searchQuery={debounceQuery}
+          />
         </Box>
       }
       section3={[
