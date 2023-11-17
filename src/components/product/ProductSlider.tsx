@@ -19,8 +19,6 @@ export default function ProductSlider({ image }: { image: string[] }) {
     <>
       <Swiper
         style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
           width: "100%",
           height: "300px",
         }}
