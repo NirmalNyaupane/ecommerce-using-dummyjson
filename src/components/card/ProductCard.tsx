@@ -1,11 +1,9 @@
-import * as React from "react";
 import {
-  Card,
   Box,
-  CardContent,
-  Typography,
+  Card,
   CardActionArea,
-  Skeleton,
+  CardContent,
+  Typography
 } from "@mui/material";
 import Image from "next/image";
 interface props {

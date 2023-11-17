@@ -5,9 +5,10 @@ import Image from "next/image";
 import ConditionallyRender from "@/components/common/ConditionallyRender";
 import { useQuery } from "@tanstack/react-query";
 import { getProductBySearchApi } from "@/services/productService";
+import { useRouter } from "next/navigation";
 const SearchProducts = ({
   searchQuery,
-  isOpen
+  isOpen,
 }: {
   searchQuery: string;
   isOpen: boolean;
@@ -18,6 +19,7 @@ const SearchProducts = ({
     enabled: searchQuery !== "" || !!searchQuery,
   });
 
+  const router = useRouter();
   return (
     <ConditionallyRender
       condition={isOpen && searchQuery !== ""}
@@ -108,6 +110,9 @@ const SearchProducts = ({
                       my={1}
                       key={singleProduct.id}
                       borderRadius={"5px"}
+                      onMouseDown={() =>
+                        router.push(`/product/${singleProduct.id}`)
+                      }
                       sx={{
                         cursor: "pointer",
                       }}

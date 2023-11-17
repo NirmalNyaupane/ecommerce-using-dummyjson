@@ -1,15 +1,14 @@
 "use client";
+import useDebounce from "@/hook/useDebounce";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/material";
+import { useState } from "react";
 import CommonModal from "../common/CommonModal";
 import { PrimaryButton } from "../common/CustomButton";
 import { InputField } from "../common/InputField";
 import Login from "../loginsignup/Login";
 import Signup from "../loginsignup/Signup";
 import CommonNav from "./common/CommonNav";
-import Image from "next/image";
-import { useState } from "react";
-import useDebounce from "@/hook/useDebounce";
 import SearchProducts from "./common/SearchProducts";
 const LogoutNav = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");

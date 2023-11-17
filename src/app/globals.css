@@ -14,3 +14,7 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none !important;
 }
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
